@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressSession = require("express-session");
 const flash = require("connect-flash");
+const PORT = process.env.PORT || 4000;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -52,5 +53,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
 
 module.exports = app;
